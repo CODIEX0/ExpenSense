@@ -46,7 +46,6 @@ class ViewExpenseFragment : Fragment() {
             Toast.makeText(context, "Invalid amount format. Please enter a valid number.", Toast.LENGTH_SHORT).show()
             amount = 0.0
         }
-        Category = binding.CategorySpinner.selectedItem.toString()
 
         val expense = Expense(
             Id,

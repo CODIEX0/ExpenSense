@@ -52,7 +52,6 @@ class ExpenseTrackingFragment : Fragment(), ExpenseAdapter.OnItemClickListener {
                 description,
                 category
             )
-
             addExpense(expense)
         }
 
