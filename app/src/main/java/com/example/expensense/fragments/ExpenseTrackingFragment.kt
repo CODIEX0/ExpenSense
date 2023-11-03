@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -32,8 +33,6 @@ class ExpenseTrackingFragment : Fragment(), ExpenseAdapter.OnItemClickListener {
         // Inflate the layout for this fragment
         binding = FragmentExpenseTrackingBinding.inflate(inflater, container, false)
 
-
-
         binding.btnAddExpense.setOnClickListener{
 
             val description = binding.edtExpenseDescription.text.toString()
@@ -43,6 +42,7 @@ class ExpenseTrackingFragment : Fragment(), ExpenseAdapter.OnItemClickListener {
             // Format the date to display in your desired format (e.g., "dd/MM/yyyy")
             val dateFormat = SimpleDateFormat("dd MMMM yyyy HH:mm", Locale.getDefault())
             val date = dateFormat.format(calendar.time)
+
             val category = binding.CategorySpinner.selectedItem.toString()
 
             val expense = Expense(
@@ -78,6 +78,21 @@ class ExpenseTrackingFragment : Fragment(), ExpenseAdapter.OnItemClickListener {
             Toast.makeText(activity,e.message,Toast.LENGTH_SHORT).show()
             Log.d(ContentValues.TAG, e.message.toString())
         }
+
+        val categories = arrayOf(
+            "FOOD",
+            "TRANSPORTATION",
+            "ACCOMMODATION",
+            "ENTERTAINMENT",
+            "SHOPPING",
+            "UTILITIES",
+            "HEALTHCARE",
+            "EDUCATION",
+            "TRAVEL",
+            "MISCELLANEOUS"
+        )
+        binding.CategorySpinner.adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, categories)
+        binding.CategorySpinner.setSelection(0) // Set the default selected item if needed
     }
 
     fun addExpense(expense: Expense){

@@ -18,7 +18,7 @@ class ExpenseAdapter(private val expenses: List<Expense>) : RecyclerView.Adapter
         val category: TextView = itemView.findViewById(R.id.expenseCategory)
 
         fun bind(expense: Expense) {
-            amount.text = expense.amount.toString()
+            amount.text = "R " + expense.amount.toString()
             date.text = expense.date
             description.text = expense.description
             category.text = expense.category

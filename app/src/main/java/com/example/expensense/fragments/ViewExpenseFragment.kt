@@ -33,7 +33,19 @@ class ViewExpenseFragment : Fragment() {
         binding = FragmentViewExpenseBinding.inflate(inflater, container, false)
 
         val description = binding.edtDescription.text.toString()
-        val amount = binding.edtAmount.text.toString().toDouble()
+        val amountText = binding.edtAmount.text.toString()
+        var amount: Double
+
+        try {
+            amount = amountText.toDouble()
+            // Conversion was successful, and 'amount' contains the double value.
+        } catch (e: NumberFormatException) {
+            // Handle the case where the conversion failed (invalid input)
+            // You can show a Toast or display an error message to the user
+            // For example:
+            Toast.makeText(context, "Invalid amount format. Please enter a valid number.", Toast.LENGTH_SHORT).show()
+            amount = 0.0
+        }
         Category = binding.CategorySpinner.selectedItem.toString()
 
         val expense = Expense(
