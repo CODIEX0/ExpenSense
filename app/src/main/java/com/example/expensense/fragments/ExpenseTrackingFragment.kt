@@ -1,6 +1,7 @@
 package com.example.expensense.fragments
 
 import android.content.ContentValues
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -9,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.expensense.Global
@@ -26,6 +28,7 @@ class ExpenseTrackingFragment : Fragment(), ExpenseAdapter.OnItemClickListener {
 
     private lateinit var binding: FragmentExpenseTrackingBinding
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -59,6 +62,7 @@ class ExpenseTrackingFragment : Fragment(), ExpenseAdapter.OnItemClickListener {
         return binding.root
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -94,6 +98,7 @@ class ExpenseTrackingFragment : Fragment(), ExpenseAdapter.OnItemClickListener {
         binding.CategorySpinner.setSelection(0) // Set the default selected item if needed
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     fun addExpense(expense: Expense){
         expenses.add(expense) //add the new expense to the list
         Toast.makeText(context, "Expense edited successfully.", Toast.LENGTH_SHORT).show()

@@ -1,6 +1,6 @@
 package com.example.expensense.data
 
-enum class ExpenseCategory {
+enum class Category {
     FOOD,
     TRANSPORTATION,
     ACCOMMODATION,

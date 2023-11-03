@@ -8,16 +8,29 @@
     android:background="@color/background"
     tools:context=".fragments.ExpenseTrackingFragment">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/edtBalance"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:hint="Balance" />
+    </LinearLayout>
+
     <EditText
         android:id="@+id/edtExpenseDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:hint="Description" />
 
     <EditText
         android:id="@+id/edtExpenseAmount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:hint="Amount" />
 
     <Spinner
