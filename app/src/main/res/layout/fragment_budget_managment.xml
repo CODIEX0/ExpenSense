@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="5dp"
-    android:background="@color/background"
     tools:context=".fragments.BudgetManagmentFragment">
 
     <EditText
@@ -48,11 +47,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:backgroundTint="@color/Orange"
         android:text="Set Budget" />
 
-    <view class="androidx.recyclerview.widget.RecyclerView"
-        android:id="@+id/rvBudgets"
+    <ListView
+        android:id="@+id/listViewBudgets"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
