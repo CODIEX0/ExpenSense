@@ -128,6 +128,10 @@ class ViewExpenseFragment : Fragment() {
         if(index != -1){
             expenses.removeAt(index) //remove the expense from the list
         }
+
+        ExpenseTrackingFragment().balance += expense.amount // Add the expense amount back to the balance
+        ExpenseTrackingFragment().updateBalanceText()
+
         Toast.makeText(context, "Expense deleted successfully.", Toast.LENGTH_SHORT).show()
         requireActivity().onBackPressed() // Navigate back to the previous screen
     }

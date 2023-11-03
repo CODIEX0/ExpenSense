@@ -51,8 +51,8 @@
         android:backgroundTint="@color/Orange"
         android:text="Set Budget" />
 
-    <view class="androidx.recyclerview.widget.RecyclerView"
-        android:id="@+id/rvBudgets"
+    <ListView
+        android:id="@+id/listViewBudgets"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
