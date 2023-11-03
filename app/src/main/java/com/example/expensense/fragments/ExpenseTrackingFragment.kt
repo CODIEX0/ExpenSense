@@ -8,15 +8,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Spinner
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.expensense.Global
 import com.example.expensense.Global.expenses
+//import com.example.expensense.Global.expenses
 import com.example.expensense.R
 import com.example.expensense.adapter.ExpenseAdapter
+import com.example.expensense.data.BudgetItem
 import com.example.expensense.data.Expense
 import com.example.expensense.databinding.FragmentExpenseTrackingBinding
 import java.text.SimpleDateFormat
@@ -27,6 +32,10 @@ import java.util.UUID
 class ExpenseTrackingFragment : Fragment(), ExpenseAdapter.OnItemClickListener {
 
     private lateinit var binding: FragmentExpenseTrackingBinding
+    private lateinit var budgetItems: List<BudgetItem>
+    private lateinit var budgetSpinner: Spinner
+    private lateinit var balanceTextView: TextView
+    var balance = 0.0
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
@@ -58,6 +67,43 @@ class ExpenseTrackingFragment : Fragment(), ExpenseAdapter.OnItemClickListener {
             addExpense(expense)
         }
 
+        budgetSpinner = binding.GrantSpinner
+        balanceTextView = binding.txtBalance
+
+        val budgetItems = listOf(
+            BudgetItem("old-age pension(60 and 74 yrs)", 2090.0),
+            BudgetItem("old-age pension(greater than 74 yrs)", 2110.0),
+            BudgetItem("Disability Grant", 2090.0),
+            BudgetItem("Child Support Grant", 510.0),
+            BudgetItem("Foster Child Grant", 1130.0),
+            BudgetItem("Child Care Dependency", 2090.0),
+            BudgetItem("War Veterans Grant", 2110.0),
+            BudgetItem("The Grant-In-Aid", 510.0),
+            BudgetItem("Child Support Grant Top-Up", 250.0),
+            BudgetItem("SRD", 350.0)
+        )
+        binding.CategorySpinner.adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, budgetItems)
+
+        val adapter = ArrayAdapter(
+            requireContext(),
+            android.R.layout.simple_spinner_item,
+            budgetItems.map { it.description }
+        )
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        budgetSpinner.adapter = adapter
+
+        budgetSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                // Update the balance variable when an item is selected
+                balance = budgetItems[position].amount
+                updateBalanceText()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                balance += 0
+            }
+        }
 
         return binding.root
     }
@@ -96,11 +142,19 @@ class ExpenseTrackingFragment : Fragment(), ExpenseAdapter.OnItemClickListener {
         )
         binding.CategorySpinner.adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, categories)
         binding.CategorySpinner.setSelection(0) // Set the default selected item if needed
+
+
+    }
+
+    fun updateBalanceText() {
+        binding.txtBalance.text = "R $balance"
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun addExpense(expense: Expense){
         expenses.add(expense) //add the new expense to the list
+        balance -= expense.amount // Subtract the expense amount from the balance
+        updateBalanceText()
         Toast.makeText(context, "Expense edited successfully.", Toast.LENGTH_SHORT).show()
     }
 
