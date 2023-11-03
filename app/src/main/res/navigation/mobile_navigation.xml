@@ -33,4 +33,10 @@
         android:name="com.example.expensense.fragments.SavingsGoalFragment"
         android:label="Savings Goals"
         tools:layout="@layout/fragment_savings_goal" />
+
+    <fragment
+        android:id="@+id/nav_OCRReceipt"
+        android:name="com.example.expensense.fragments.OCRFragment"
+        android:label="Scan A Receipt"
+        tools:layout="@layout/fragment_o_c_r" />
 </navigation>
