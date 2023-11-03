@@ -17,11 +17,9 @@ class SignInActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-
-        binding.btnSignIn.setOnClickListener(){
+        binding.btnSignIn.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
-            finish()
         }
     }
 }

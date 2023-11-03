@@ -8,16 +8,36 @@
     android:background="@color/background"
     tools:context=".fragments.ExpenseTrackingFragment">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+
+        <TextView
+            android:id="@+id/txtBalance"
+            android:layout_width="150dp"
+            android:layout_height="45dp"
+            android:textSize="30dp"
+            android:text="0" />
+
+        <Spinner
+            android:id="@+id/GrantSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/spinner"/>
+    </LinearLayout>
+
     <EditText
         android:id="@+id/edtExpenseDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:hint="Description" />
 
     <EditText
         android:id="@+id/edtExpenseAmount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:hint="Amount" />
 
     <Spinner

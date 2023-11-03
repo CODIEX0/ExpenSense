@@ -13,7 +13,15 @@
             android:icon="@drawable/expense"
             android:title="Expenses" />
         <item
-            android:id="@+id/nav_Savings"
+            android:id="@+id/nav_finance"
+            android:icon="@drawable/education"
+            android:title="Financial Literacy" />
+        <item
+            android:id="@+id/nav_info"
+            android:icon="@drawable/grant"
+            android:title="Grant Information" />
+        <item
+            android:id="@+id/nav_savings"
             android:icon="@drawable/savings"
             android:title="Savings" />
         <item

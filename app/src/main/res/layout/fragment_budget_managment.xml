@@ -5,27 +5,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:background="@color/background"
+    android:padding="5dp"
     tools:context=".fragments.BudgetManagmentFragment">
 
     <EditText
         android:id="@+id/editTextBudgetName"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
         android:hint="Budget Name" />
 
     <EditText
         android:id="@+id/editTextBudgetAmount"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
         android:hint="Budget Amount" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btnStartDate"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:text="Start Date" />
+
+        <Button
+            android:id="@+id/btnEndDate"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="140dp"
+            android:text="End Date" />
+    </LinearLayout>
+
 
     <Button
         android:id="@+id/buttonSetBudget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/Orange"
+        android:layout_gravity="center"
         android:text="Set Budget" />
 
     <ListView
